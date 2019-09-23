@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+info.applicationName: "@project.artifactId@"
+info.version: "@project.version@"
+info.branch: "@git.branch@"
+
+movies-service:
+  authentication:
+    users:
+      - username: api
+        password: $2a$10$7ZrkGvZRF9ArNukhvYQl.O3bcJ6Nre7m3G71y3MIDxQq.xCfB1HfK
+        roles: USER
