@@ -6,6 +6,18 @@ info.version: "@project.version@"
 info.branch: "@git.branch@"
 
 movies-service:
+  api-uri: "http://www.omdbapi.com/?apikey=7fcb37fd&r=json&t="
+  available-movies:
+    - titanic
+    - avatar
+    - interstellar
+    - the martian
+    - gatsby
+    - gladiator
+    - braveheart
+    - inception
+    - memento
+  check-frequency: 60000
   authentication:
     users:
       - username: api

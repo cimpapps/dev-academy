@@ -11,6 +11,8 @@ import java.util.List;
 @ConfigurationProperties(prefix = "movies-service")
 public class ApiProperties {
 
+    private String apiUri;
+    private String[] availableMovies;
     private Authentication authentication;
 
     @Getter

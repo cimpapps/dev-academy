@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.net.HttpURLConnection;
 import java.util.List;
+import java.util.Optional;
 
 import static com.orange.devacademy.moviesservice.configuration.ApiConstants.API_V1;
 
@@ -32,7 +34,7 @@ public class MoviesController {
 
 
     @ApiOperation(
-            value = "Get my movies", authorizations = {@Authorization(value = "basicAuthApi")}
+            value = "Get movies", authorizations = {@Authorization(value = "basicAuthApi")}
     )
     @ApiResponses(
             value = {
@@ -43,7 +45,10 @@ public class MoviesController {
             }
     )
     @GetMapping(value = "/movies", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Movie> getMyMovies() {
+    public List<Movie> getMyMovies(@RequestParam(required = false) String title) {
+        if (Optional.ofNullable(title).isPresent())
+            return moviesService.getMovieByTitle(title);
+
         return moviesService.getMyMovies();
     }
 }
