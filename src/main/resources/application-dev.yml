@@ -28,7 +28,3 @@ omdb:
   apiKey: 69209ae6
   url: http://www.omdbapi.com
 
-spring.data.mongodb:
-  host: localhost
-  port: 27017
-  database: mediastore
