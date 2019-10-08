@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
+import static com.orange.devacademy.mediaservice.configuration.MediaConstants.API_V1;
+
 @RestController
+@RequestMapping(API_V1)
 public class FavouritesController {
 
     private FavouritesService favouritesService;
@@ -23,7 +26,7 @@ public class FavouritesController {
         favouritesService.removeFavourite(movieId);
     }
 
-    @PutMapping(value = "/favourites", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "/favourites")
     public void addFavourite(@RequestParam String movieId) {
         favouritesService.addToFavourites(movieId);
     }
