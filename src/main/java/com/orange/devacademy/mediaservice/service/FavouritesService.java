@@ -39,9 +39,10 @@ public class FavouritesService {
         if(favouriteMovieIds == null) {
             return;
         }
-        favouriteMovieIds.remove(movieId);
-        user.setFavouriteMovieIds(favouriteMovieIds);
-        userService.saveUser(user);
+        if(favouriteMovieIds.remove(movieId)) {
+            user.setFavouriteMovieIds(favouriteMovieIds);
+            userService.saveUser(user);
+        }
     }
 
     public Set<Media> getFavourites() {
