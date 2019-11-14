@@ -4,4 +4,6 @@ COPY target/*.jar /server.jar
 
 RUN ls /
 
+
+
 ENTRYPOINT ["java", "-jar","/server.jar"]
