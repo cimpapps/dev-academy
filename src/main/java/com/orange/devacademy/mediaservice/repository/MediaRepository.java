@@ -15,4 +15,6 @@ public interface MediaRepository extends MongoRepository<Media, String> {
 
     Set<Media> findAllById(Set<String> ids);
 
+    Set<Media> getAllById(Set<String> ids);
+
 }

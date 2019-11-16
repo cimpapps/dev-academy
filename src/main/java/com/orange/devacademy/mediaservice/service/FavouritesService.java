@@ -2,7 +2,6 @@ package com.orange.devacademy.mediaservice.service;
 
 import com.orange.devacademy.mediaservice.model.Media;
 import com.orange.devacademy.mediaservice.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -16,7 +15,6 @@ public class FavouritesService {
 
     private final MoviesService moviesService;
 
-    @Autowired
     public FavouritesService(MoviesService moviesService, UserService userService) {
         this.moviesService = moviesService;
         this.userService = userService;
@@ -25,7 +23,7 @@ public class FavouritesService {
     public void addToFavourites(String movieId) {
         User user = userService.currentUser();
         Set<String> favouriteMovieIds = user.getFavouriteMovieIds();
-        if(favouriteMovieIds == null) {
+        if (favouriteMovieIds == null) {
             favouriteMovieIds = new HashSet<>();
         }
         favouriteMovieIds.add(movieId);
@@ -36,10 +34,10 @@ public class FavouritesService {
     public void removeFavourite(String movieId) {
         User user = userService.currentUser();
         Set<String> favouriteMovieIds = user.getFavouriteMovieIds();
-        if(favouriteMovieIds == null) {
+        if (favouriteMovieIds == null) {
             return;
         }
-        if(favouriteMovieIds.remove(movieId)) {
+        if (favouriteMovieIds.remove(movieId)) {
             user.setFavouriteMovieIds(favouriteMovieIds);
             userService.saveUser(user);
         }
@@ -48,7 +46,7 @@ public class FavouritesService {
     public Set<Media> getFavourites() {
         User user = userService.currentUser();
         Set<String> favouriteMovieIds = user.getFavouriteMovieIds();
-        if(favouriteMovieIds == null || favouriteMovieIds.isEmpty()) {
+        if (favouriteMovieIds == null || favouriteMovieIds.isEmpty()) {
             return Collections.emptySet();
         }
         return moviesService.getAllById(favouriteMovieIds);
