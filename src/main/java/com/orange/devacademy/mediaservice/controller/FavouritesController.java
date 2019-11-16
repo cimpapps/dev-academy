@@ -22,12 +22,14 @@ public class FavouritesController {
     }
 
     @DeleteMapping(value = "/favourites")
-    public void removeFavourite(@RequestParam String movieId) {
+    public void removeFavourite(@RequestParam String movieId)
+    {
         favouritesService.removeFavourite(movieId);
     }
 
     @PutMapping(value = "/favourites")
-    public void addFavourite(@RequestParam String movieId) {
+    public void addFavourite(@RequestParam String movieId)
+    {
         favouritesService.addToFavourites(movieId);
     }
 
